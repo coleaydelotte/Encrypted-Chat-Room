@@ -17,7 +17,7 @@ def create_server_side_connection():
     return None
 
 def main():
-    print(ping())
+    print(create_server_side_connection())
 
 if __name__ == "__main__":
     main()

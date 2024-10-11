@@ -6,7 +6,7 @@ def create_client_side_connection():
     client_socket.connect(server_address)
 
 def main():
-    print(ping())
+    print(create_client_side_connection())
 
 if __name__ == "__main__":
     main()
