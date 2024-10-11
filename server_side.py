@@ -1,6 +1,6 @@
 from socket import socket, AF_INET, SOCK_STREAM
 
-def ping():
+def create_server_side_connection():
     # `AF_INET`` stands for "Address Family: Internet".
     # IPv4 addresses so we are using the internet family.
     # `SOCK_STREAM` stands for "Socket Type: Stream"
