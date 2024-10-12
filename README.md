@@ -3,6 +3,8 @@ A program where a user can connect to a server in the terminal send a message an
 
 potentially using Python and AES for encrypting the messages in transfer.
 
+Using Python socket, AF_INET, and SOCK_STREAM libraries
+
 I imagine program will have two files one for the server to listen and broadcast messages and the user to do the same but on the user side.
 
 1. Create a simple connection between a server and a user.
