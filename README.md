@@ -5,6 +5,8 @@ potentially using Python and AES for encrypting the messages in transfer.
 
 Using Python socket, AF_INET, and SOCK_STREAM libraries
 
+As explained on the documentation Python Socket is a library that allows python to work with incoming and outgoing traffic through a operating system's ports/firewall.
+
 I imagine program will have two files one for the server to listen and broadcast messages and the user to do the same but on the user side.
 
 1. Create a simple connection between a server and a user.
