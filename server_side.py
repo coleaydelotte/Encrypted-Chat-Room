@@ -23,20 +23,17 @@ def create_server_side_connection():
         try:
             print(f"Connection from {client_address}")
 
-            # Receive the data in small chunks and append it to the list
             while True:
                 data = connection.recv(1024)  # Buffer size is 1024 bytes
                 if data:
-                    message = data.decode('utf-8')  # Decode the bytes to string
+                    message = data.decode('utf-8') # When data is received it is sent in bytes, so we decode it to utf-8
                     print(f"Received: {message}")
-                    messages.append(message)  # Append to the list
+                    messages.append(message)  # Append to the display list
                 else:
-                    # No more data from the client
                     print(f"Message list: {messages}")
                     break
         
         finally:
-            # Clean up the connection
             connection.close()
 
 
