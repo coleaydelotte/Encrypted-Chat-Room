@@ -15,3 +15,9 @@ I imagine program will have two files one for the server to listen and broadcast
 4. Functionality fo the users to send messages.
 5. Encrypt messages in traffic.
 6. Dockerize?
+
+## Authors
+<ol>
+    <li> Cole Aydelotte
+    <li> Omer Qureshi
+</ol>
