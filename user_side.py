@@ -9,6 +9,12 @@ class Client:
         self.server_address = ('localhost', 8080)
         self.client_socket.connect(self.server_address)
 
+    def set_messages(self, messages):
+        self.messages = messages
+
+    def append_message(self, message):
+        self.messages.append(message)
+
 def main():
     print(Client.create_client_side_connection())
 
