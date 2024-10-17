@@ -1,12 +1,16 @@
 from socket import socket, AF_INET, SOCK_STREAM
 
-def create_client_side_connection():
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = ('localhost', 8080)
-    client_socket.connect(server_address)
+class Client:
+    def __init__(self):
+        self.messages = []
+        
+    def create_client_side_connection(self):
+        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_address = ('localhost', 8080)
+        self.client_socket.connect(self.server_address)
 
 def main():
-    print(create_client_side_connection())
+    print(Client.create_client_side_connection())
 
 if __name__ == "__main__":
     main()
