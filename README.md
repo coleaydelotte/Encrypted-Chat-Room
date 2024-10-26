@@ -16,6 +16,8 @@ I imagine program will have two files one for the server to listen and broadcast
 5. Encrypt messages in traffic.
 6. Dockerize?
 
+Could use docker compose but might run into some auto launching files if we do.
+
 ## Authors
 <ol>
     <li> Cole Aydelotte
