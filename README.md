@@ -3,6 +3,8 @@ A program where a user can connect to a server in the terminal send a message an
 
 potentially using Python and AES for encrypting the messages in transfer.
 
+potentially using Fernet (symmetric encryption) using Cryptography as a means of encryption.
+
 Using Python socket, AF_INET, and SOCK_STREAM libraries
 
 As explained on the documentation Python Socket is a library that allows python to work with incoming and outgoing traffic through a operating system's ports/firewall.
@@ -15,6 +17,8 @@ I imagine program will have two files one for the server to listen and broadcast
 4. Functionality fo the users to send messages.
 5. Encrypt messages in traffic.
 6. Dockerize?
+
+Could use docker compose but might run into some auto launching files if we do.
 
 ## Authors
 <ol>
