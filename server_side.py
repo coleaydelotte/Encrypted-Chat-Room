@@ -6,7 +6,7 @@ class Server():
         self.messages = []
 
     def create_server_side_connection(self):
-        # `AF_INET`` stands for "Address Family: Internet".
+        # `AF_INET` stands for "Address Family: Internet".
         # IPv4 addresses so we are using the internet family.
         # `SOCK_STREAM` stands for "Socket Type: Stream"
         # TCP is a stream-oriented protocol, meaning that the data is transmitted in a continuous stream.
