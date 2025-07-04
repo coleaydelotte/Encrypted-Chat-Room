@@ -43,7 +43,8 @@ class Server():
 
 
 def main():
-    print(Server.create_server_side_connection())
+    server = Server()
+    print(server.create_server_side_connection())
 
 if __name__ == "__main__":
     main()
