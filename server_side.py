@@ -1,50 +1,59 @@
-from socket import socket, AF_INET, SOCK_STREAM
+import socket
+import threading
 
-class Server():
-
+class Server:
     def __init__(self):
-        self.messages = []
+        self.clients = []  # List to hold all connected client sockets
+        self.lock = threading.Lock()  # For thread-safe access to clients list
+
+    def broadcast(self, message, sender_socket):
+        """Send a message to all clients except the sender."""
+        with self.lock:
+            for client in self.clients:
+                if client != sender_socket:
+                    try:
+                        client.sendall(message.encode('utf-8'))
+                    except:
+                        client.close()
+                        self.clients.remove(client)
+
+    def handle_client(self, connection, client_address):
+        print(f"Connection from {client_address}")
+        with self.lock:
+            self.clients.append(connection)
+
+        try:
+            while True:
+                data = connection.recv(1024)
+                if not data:
+                    break
+                message = data.decode('utf-8')
+                print(f"Received from {client_address}: {message}")
+                self.broadcast(f"{client_address[0]}: {message}", connection)
+        finally:
+            with self.lock:
+                if connection in self.clients:
+                    self.clients.remove(connection)
+            connection.close()
+            print(f"Client {client_address} disconnected.")
 
     def create_server_side_connection(self):
-        # `AF_INET` stands for "Address Family: Internet".
-        # IPv4 addresses so we are using the internet family.
-        # `SOCK_STREAM` stands for "Socket Type: Stream"
-        # TCP is a stream-oriented protocol, meaning that the data is transmitted in a continuous stream.
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        messages = []
-
-        # Port `8080` listening on ip: `localhost`
-        server_address = ('localhost', 8080)
-        server_socket.bind(server_address)
-        #listening for incoming connections allowing `1` to be queued for connection.
-        server_socket.listen(1)
+        server_socket.bind(('localhost', 8080))
+        server_socket.listen()
         print("Server is listening on port 8080...")
 
         while True:
-            # Wait for a connection
             print("Waiting for a connection...")
             connection, client_address = server_socket.accept()
-            
-            try:
-                print(f"Connection from {client_address}")
-
-                while True:
-                    data = connection.recv(1024)  # Buffer size is 1024 bytes
-                    if data:
-                        message = data.decode('utf-8') # When data is received it is sent in bytes, so we decode it to utf-8
-                        print(f"Received: {message}")
-                        messages.append(message)  # Append to the display list
-                    else:
-                        print(f"Message list: {messages}")
-                        break
-            
-            finally:
-                connection.close()
-
+            client_thread = threading.Thread(
+                target=self.handle_client, args=(connection, client_address)
+            )
+            client_thread.start()
 
 def main():
     server = Server()
-    print(server.create_server_side_connection())
+    server.create_server_side_connection()
 
 if __name__ == "__main__":
     main()
