@@ -1,24 +1,50 @@
-# Encrypted-Chat-Room
-A program where a user can connect to a server in the terminal send a message and all other people in the chatroom will be displayed that message as well as send messages.
+# 🔐 Encrypted Chat Room
 
-potentially using Python and AES for encrypting the messages in transfer.
+A terminal-based encrypted chat room built using Python sockets. This project allows multiple users to connect to a server and exchange messages securely. Messages are encrypted in transit using symmetric encryption (AES via the `cryptography` library with Fernet).
 
-potentially using Fernet (symmetric encryption) using Cryptography as a means of encryption.
+## 📌 Features
 
-Using Python socket, AF_INET, and SOCK_STREAM libraries
+- ✅ Server-client architecture using Python `socket` (`AF_INET`, `SOCK_STREAM`)
+- ✅ Supports multiple users concurrently using `threading`
+- ✅ Real-time message broadcasting
+- ✅ End-to-end encryption using **Fernet** (AES-based)
+- ✅ Terminal interface for simplicity and portability
+- 🛠️ (Optional) Docker support in the future
 
-As explained on the documentation Python Socket is a library that allows python to work with incoming and outgoing traffic through a operating system's ports/firewall.
+---
 
-I imagine program will have two files one for the server to listen and broadcast messages and the user to do the same but on the user side.
+## ⚙️ How It Works
 
-1. Create a simple connection between a server and a user.
-2. Make `ping` and `pong` to ensure messages can be sent and received.
-3. Make the connections be able to be logged into by many users.
-4. Functionality fo the users to send messages.
-5. Encrypt messages in traffic.
-6. Dockerize?
+The system consists of two Python files:
 
-Could use docker compose but might run into some auto launching files if we do.
+- **`server.py`** – Accepts incoming connections, receives messages, and broadcasts them to all connected users.
+- **`client.py`** – Connects to the server, encrypts messages before sending, and decrypts incoming messages in real-time.
+
+---
+
+## 🧪 Development Milestones
+
+1. ✅ Create a basic TCP connection between server and client.
+2. ✅ Implement `ping` and `pong` test messages for handshake.
+3. ✅ Support for **multiple users** concurrently.
+4. ✅ Implement real-time **message sending and receiving**.
+5. ✅ Encrypt messages during transfer using **Fernet (AES)**.
+6. 🚧 Optional: Dockerize the app using `Docker` and `docker-compose`.
+
+---
+
+## 🔐 Encryption Details
+
+Messages are encrypted using **Fernet symmetric encryption**, which:
+
+- Uses AES in CBC mode with PKCS7 padding
+- Ensures confidentiality and integrity of messages
+- Requires only a **shared key** (generated once per session or stored securely)
+
+> Requires the `cryptography` library:
+```bash
+pip install cryptography
+```
 
 ## Authors
 <ol>
