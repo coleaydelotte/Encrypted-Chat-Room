@@ -4,7 +4,7 @@ from tkinter import scrolledtext
 class ChatRoomGUI:
     def __init__(self, master):
         self.master = master
-        self.master.title("🔐 Encrypted Chat Room")
+        self.master.title("Encrypted Chat Room")
         self.master.geometry("500x400")
 
         self.chat_area = scrolledtext.ScrolledText(master, state='disabled', wrap='word')
@@ -23,6 +23,8 @@ class ChatRoomGUI:
             self.display_message(f"You: {message}")
             self.entry.delete(0, tk.END)
             # Here you would typically send the message to the server
+            # For demonstration, we will just echo it back
+            self.display_message(f"Server: {message}")
     def display_message(self, message):
         self.chat_area.config(state='normal')
         self.chat_area.insert(tk.END, message + "\n")
