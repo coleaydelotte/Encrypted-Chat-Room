@@ -35,3 +35,6 @@ if __name__ == "__main__":
     root = tk.Tk()
     gui = ChatRoomGUI(root)
     root.mainloop()
+
+# This code creates a simple GUI for an encrypted chat room using Tkinter.
+# It includes a chat area, an entry field for typing messages, and a send button.
