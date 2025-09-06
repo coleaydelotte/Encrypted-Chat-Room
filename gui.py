@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import scrolledtext
 
 class ChatRoomGUI:
+    """
+    A simple GUI for an encrypted chat room using Tkinter.
+    """
     def __init__(self, master):
         self.master = master
         self.master.title("Encrypted Chat Room")
